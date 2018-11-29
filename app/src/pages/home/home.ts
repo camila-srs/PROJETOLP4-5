@@ -35,9 +35,6 @@ export class HomePage {
     this.navCtrl.push(CadastroUsuarioPage.name)
   }
 
-  
-
-
 mostrarListaUsuario(){
   this.listUsuario=!this.listUsuario;
 };
