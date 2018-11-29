@@ -21,7 +21,7 @@ import { HomePage } from '../home/home';
   templateUrl: 'cadastro-pergunta.html',
 })
 export class CadastroPerguntaPage {
-
+/**atributos que iremos usar no nosso controlller */
     public resposta:Resposta;
     public aux:number=0;
     public aux2:boolean=false;
@@ -62,26 +62,47 @@ export class CadastroPerguntaPage {
       }
     
       }
-  
+   /** 
+   * Primeiro método executado quando a paǵina é carregada na pilha de execução.
+   * Este método é executado apenas uma única vez. Só é executado novamente quando 
+   * a página é carregada novamente. 
+   * Quando é executado pop em uma página subsequente, 
+   * volta-se para esta página, porém, este método não é carregado novamente. 
+  */
   ionViewDidLoad() {
     console.log('ionViewDidLoad CadastroPerguntaPage');
   }
 
- 
+  /**  
+   *  Este método é executado quando esta página volta
+   *  a ser ativa. Quando se chama outra página, 
+   * como o que acontece na avança cadastro ou
+   * seleciona, esta página entra em segundo plano
+   *  e fica desativada. Quando a página seguinte é finalizada, este método é executado. 
+  */
   ionViewWillEnter() {
     this.resposta = new Resposta;
     console.log(this.resposta);
   
   if(this.navParams.get('userBack')){
-      /** obtenho o parâmetro por meio do método get e inserio na lista pelo método push */
+       /** 
+     * Na página de respostas, 
+     * após cadastrar uma resposta, eu seto
+     *  um parâmetro userBack com os dados da resposta cadastrada. Ou seja, se
+     * este parâmetro existe, quer dizer que houve uma resposta nova
+     * cadastrada, então vou inserir esta nova resposta na lista de respostas. 
+     * Assim eu não preciso ir no servidor requerir uma nova listagem pq a resposta foi cadastrada.
+    */
       
-      var teste= this.navParams.get('userBack');
-     this.resposta.label = teste.label;
-      this.resposta.descricao = teste.descricao;
-      this.resposta.condicao = teste.condicao;
+    
+      var res= this.navParams.get('userBack');
+      this.resposta.label = res.label;
+      this.resposta.descricao = res.descricao;
+      this.resposta.condicao = res.condicao;
       console.log(this.resposta);
-     this.virificarTamanho();
-      if(!this.validarRespota(this.resposta)){
+     this.verificarTamanho();
+      if(!this.validarResposta(this.resposta)){
+        /** obtenho o parâmetro por meio do método get e inserio na lista pelo método push */
       this.pergunta.respostas.push( this.resposta);
       console.log(this.pergunta);
       }
@@ -90,7 +111,7 @@ export class CadastroPerguntaPage {
   }
 
 
-  validarRespota(as:Resposta):boolean{
+  validarResposta(as:Resposta):boolean{
       if(this.aux2){
       if(as.label === 'a'){
         this.pergunta.respostas[0].label=this.resposta.label;
@@ -134,7 +155,7 @@ export class CadastroPerguntaPage {
 }
   }
   
-  virificarTamanho(){
+  verificarTamanho(){
     if(this.pergunta.respostas.length<1){
       this.aux = 1;
     
@@ -282,11 +303,11 @@ this.error.condicao = false;
 }
 if(verificarRes>=2){
   this.error.condicao = true;
-  this.error.message = "As opçãoes :" +guardarP+ "  estao como true por favor escolha somente uma" ;
+  this.error.message = "As opções :" +guardarP+ "  estão como true por favor escolha somente uma" ;
 }else{
 if(verificarRes2 <4){
   this.error.condicao = true;
-  this.error.message = "Por favor preencha todas as opçoes" ;
+  this.error.message = "Por favor preencha todas as opções" ;
 }
 
 }

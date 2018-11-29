@@ -7,6 +7,7 @@
         <form >
             <ion-list>  
             <ion-item>
+               <!--  two way data bind, permite setar o valor do nome do usuário -->
                   <ion-label stacked>Descriçao Resposta: </ion-label>
                   <ion-input [(ngModel)]= "respostas.descricao" name="descricao"  placeholder="Digite a Descriçao" ></ion-input>
                 </ion-item>
@@ -33,12 +34,5 @@
         <p ion-text color="danger">{{error.message}}</p>
     </div>
 
-    <!--  
-      ngIf bind que permite exibir conteúdo, se a variável do controller success.condicao for verdadeira, se o sucesso no cadastro, 
-      seta-se esta variável como  verdadeira e apresenta a mensagem de sucesso
-    -->
-       
-
-
-                       </form>
+  </form>
     </ion-content>
