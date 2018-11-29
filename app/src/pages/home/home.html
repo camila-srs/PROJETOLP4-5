@@ -1,0 +1,73 @@
+
+<ion-menu [content]="menu" 
+>
+  
+    <ion-header  >
+       
+      <ion-toolbar class="teste">
+
+        <ion-title menuClose class="img-uni">Menu</ion-title>
+      </ion-toolbar>
+     
+    </ion-header>
+    <ion-content>
+
+    
+      <ion-list >
+
+
+        <ion-item (click)="mostrarListaUsuario()" >
+        Usuario 
+        </ion-item>
+        <div *ngIf="listUsuario">
+          <ion-list>
+              <ion-item (click)="cadastrarUsuario(homePage)">
+                  Cadastrar
+              </ion-item>
+                <ion-item (click)="listarUsuario(eventsPage)">
+                 Listar
+                </ion-item>
+                
+          </ion-list>
+        </div>
+        <ion-item (click)="mostrarListaPergunta()">
+         Pergunta
+        </ion-item>
+        <div *ngIf="listPergunta">
+            <ion-list>
+                <ion-item (click)="cadastrarPergunta()">
+                    Cadastrar
+                </ion-item>
+                  <ion-item (click)="listarPerguntas()">
+                   Listar
+                  </ion-item>
+            </ion-list>
+          </div>
+      
+        
+      
+
+      </ion-list>
+      
+    </ion-content>
+  </ion-menu>
+  
+  <ion-nav #menu [root]="rootPage"></ion-nav>
+
+<ion-header >
+<ion-navbar >
+ 
+  <ion-title class="img-uni" >
+    Menu
+  </ion-title>
+
+
+  <button ion-button menuClose menuToggle  >
+    <ion-icon name="menu"  >
+
+    </ion-icon>
+
+
+  </button>
+</ion-navbar>
+</ion-header>

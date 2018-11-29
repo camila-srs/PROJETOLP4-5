@@ -1,0 +1,78 @@
+<!--
+     Colisberto
+  HTML da tela a ser gerada com os campos com opçoes
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title class="img-uni">Cadastro de Perguntas</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+<ion-content padding>
+  <form >
+     
+    <ion-item>
+          <ion-label stacked>Pergunta: </ion-label>
+          <ion-input placeholder="Digite a Pergunta" [(ngModel)]="pergunta.pergunta" name="pergunta"></ion-input>
+        </ion-item>
+        <ion-item>
+          <ion-label stacked>Respostas: </ion-label>
+          </ion-item>
+          <ion-item>
+              <ion-label stacked>Opção A: </ion-label>
+              <button  ion-button outline item-end icon-start (click)="cadastroDescricaoOpA()">  <ion-icon name="add"></ion-icon></button>
+            </ion-item>
+            
+      <ion-item>
+        <ion-label stacked>Opção B: </ion-label>
+        <button *ngIf ="aux>=1 " ion-button outline item-end icon-start (click)="cadastroDescricaoOpB()">  <ion-icon name="add"></ion-icon></button>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>Opção C: </ion-label>
+        <button *ngIf ="aux>=2 " ion-button outline item-end icon-start (click)="cadastroDescricaoOpC()">  <ion-icon name="add"></ion-icon></button>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>Opção D: </ion-label>
+        <button *ngIf ="aux>=3 " ion-button outline item-end icon-start (click)="cadastroDescricaoOpD()">  <ion-icon name="add"></ion-icon></button>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label stacked>Opção E: </ion-label>
+        <button  *ngIf ="aux>=4" ion-button outline item-end icon-start (click)="cadastroDescricaoOpE()">  <ion-icon name="add"></ion-icon></button>
+      </ion-item>
+      <ion-item>
+          <ion-label stacked>Categoria: </ion-label>
+          <ion-input  placeholder="Digite a categoria" [(ngModel)]="pergunta.categoria" name="categoria" ></ion-input>
+        </ion-item>  
+      
+        <div text-center margin-top *ngIf="botaoSalvar">
+          <button ion-button color="secondary" (click)="salvar()">Salvar</button>
+        </div>
+         
+        <div text-center margin-top *ngIf="botaoEditar">
+          <button ion-button color="secondary" (click)="editar()">Editar</button>
+        </div>
+      <!--  
+        ngIf bind que permite exibir conteúdo, se a variável do controller error.condição for verdadeira, se houver algum erro, seta-se esta variável como
+        verdadeira e apresenta a mensagem de erro
+      -->
+      <div *ngIf="error.condicao" text-center margin-top>
+        <p ion-text color="danger">{{error.message}}</p>
+    </div>
+
+    <!--  
+      ngIf bind que permite exibir conteúdo, se a variável do controller success.condicao for verdadeira, se o sucesso no cadastro, 
+      seta-se esta variável como  verdadeira e apresenta a mensagem de sucesso
+    -->
+    <div *ngIf="success.condicao" text-center margin-top>
+        <p ion-text color="primary">{{success.message}}</p>
+    </div>
+    
+    
+       
+  </form>
+  </ion-content>

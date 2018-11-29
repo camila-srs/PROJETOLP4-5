@@ -1,0 +1,17 @@
+/*{
+	"nome": "admin",
+	"email":"admin@admin.com.br",
+	"senha": "123456",
+	"perfil": "1"
+}*/
+
+/* modelo usado no post  - POSTMAN
+
+{
+"nome":"beto",
+"email":"joao_podium@hotmail.com",
+"senha":"666",
+"perfil":"2"
+
+}
+*/
